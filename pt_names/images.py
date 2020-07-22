@@ -36,6 +36,7 @@ def print_name(name):
 								if d not in symbols and z in symbols:
 									sname.append(elements[symbols.index(x)])
 									i += 1
+	final_im.show()
 								if d in symbols and z in symbols:
 									sname.append(elements[symbols.index(x)])
 									i += 1

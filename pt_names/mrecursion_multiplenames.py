@@ -19,28 +19,23 @@ def separate_name(name):
 	return sep_name_u
 
 
-def write_symbol_name(sep_name_u, sname):	
+def write_symbol_name(sep_name_u):	
 	i = len(sep_name_u)-1
 	if i > -1:
 		a = sep_name_u[i] 
 		if i > 0:	
 			b = sep_name_u[i-1]
-			x = b + a #mg
+			x = b + a 
 			if x in symbols:
-				sname.append(elements[symbols.index(x)])
-				sep_name_u.pop()
-				sep_name_u.pop()
-				write_symbol_name(sep_name_u, sname)
-			elif a in symbols:
-				sname.append(elements[symbols.index(a)])
-				sep_name_u.pop()
-				write_symbol_name(sep_name_u, sname)			
-			else:	
-				sname.append('0')
-		elif a in symbols:
-			sname.append(elements[symbols.index(a)])
+				return [x, write_symbol_name(sep_name_u[i-1:])]
+			if a in symbols:
+				return [a, write_symbol_name(sep_name_u[i:])]
+			else:
+				return None
+		if a in symbols:
+			return [a, write_symbol_name(sep_name_u[i:])]
 		else:
-			sname.append('0')
+			return None
 	return(sname)	
 
 
